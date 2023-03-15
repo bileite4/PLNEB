@@ -1,0 +1,82 @@
+import re
+
+#apagar new pages
+
+file = open ('dicionario_medico.txt', encoding='utf8')
+
+text = file.read()
+
+text = re.sub(r'\f', '\n', text)
+text = re.sub(r'(\n\n.+)\n\n', r'\1', text)
+
+entries = re.findall(r'\n\n(.+)((?:\n.+)+)', text) #o findall retorna uma lista com os 3 grupos de captura se nao tiver o ?:
+
+new_entries = [(designation, description.strip()) for designation, description in entries]
+
+file.close()
+
+html = open('dicionario_medico.html', 'w', encoding = 'utf8')
+
+header = '''<html>
+<head>
+<center>
+<h1 style="font-family: franklin gothic medium; color: #F85BA2">Dicionário Biomédica</h1>
+</center>
+<meta charset="UTF-8"/>
+</head>
+<style>
+table {
+  border: 1px solid black; 
+  font-size: 14px; 
+  font-family: franklin gothic medium; 
+  text-align: center;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: CENTER;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #F5E1E1;
+}
+</style>
+
+
+<body style="background-color: #Ffffff;">
+
+<CENTER>
+<table>
+<tr>
+<th style="color: #F85BA2;">Termo</th>
+<th style="color: #F85BA2;">Designação</th>
+</tr>
+</CENTER>
+'''
+
+body=''
+
+# Linhas da tabela
+for designation, description in new_entries:
+    body += '<tr>'
+    body += '<td><b>' + designation + '</b></td>'
+    body += '<td>' + description + '</td>'
+    body += '</tr>'
+
+
+
+
+
+footer = '''
+</table>
+</body>
+</html>'''
+
+html.write(header + body + footer)
+
+
+
+html.close()
