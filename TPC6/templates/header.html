@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background-color: #214559;
+            color: white;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav li {
+            margin: 0 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        nav a:hover {
+            background-color: white;
+            color: #214559;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('risks') }}">Riscos</a></li>
+                <li><a href="{{ url_for('solutions') }}">Soluções</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+   </body>
+</html>
