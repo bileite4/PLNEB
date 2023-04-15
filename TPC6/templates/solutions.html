@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block head%}
+<title>Soluções</title>
+	<style>
+		body {
+			background-image: url('background-image.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		.button-container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			z-index: 1;
+		}
+
+		.button {
+			display: inline-block;
+			padding: 20px 30px;
+			margin-bottom: 20px;
+			color: #fff;
+			background-color: #214559;
+			border-radius: 5px;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: bold;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+		}
+
+		.button:hover {
+			background-color: #fff;
+			color: #214559;
+			transform: scale(1.1);
+		}
+
+		@media screen and (max-width: 768px) {
+			.button {
+				padding: 10px 15px;
+				font-size: 14px;
+			}
+		}
+	</style>
+{% endblock %}
+{% block body%}
+	<div class="button-container">
+		<button class="button" onclick="window.location.href='{{ url_for('solutionsegua') }}';">Horses</button>
+		<button class="button" onclick="window.location.href='{{ url_for('solutionselefante') }}';">Elephants</button>
+	</div>
+{% endblock %}
