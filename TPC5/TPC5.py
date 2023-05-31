@@ -1,4 +1,5 @@
 import json
+import re
 
 file_in = open("termos_traduzidos.txt", "r", encoding="utf-8")
 linhas = file_in.readlines()
@@ -6,6 +7,7 @@ file_in.close()
 traducoes = {}
 for linha in linhas:
     key, value = linha.split(" @ ")
+    value = re.sub(r"\n", "", value)
     traducoes[key] = value
 
 file_in = open("dicionariozinho.json", "r", encoding="utf-8")
