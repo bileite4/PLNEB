@@ -23,10 +23,6 @@ def term(t):
     return render_template("term.html", designation = t, value= db.get(t,"None"))
 
 
-@app.route("/table")
-def table():
-    return render_template("table.html")
-
 @app.route("/terms/search")
 def search():
 
